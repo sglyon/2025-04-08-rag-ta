@@ -1,17 +1,11 @@
 from glob import glob
+
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from langchain_community.document_loaders import NotebookLoader
-from langchain_core.documents.base import Document
 from langchain_community.document_loaders import YoutubeLoader
-
-import yaml
-
+from langchain_core.documents.base import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-
-file_paths = [
-    "./example_data/layout-parser-paper.pdf",
-    "./example_data/state_of_the_union.txt",
-]
+import yaml
 
 
 def load_markdown_documents(root_path: str):
@@ -33,10 +27,6 @@ def load_ipynb_documents(root_path: str):
 
 
 def load_all_transcripts(root_path: str):
-    # 1. find all _lecture.yml files in root_path
-    # 2. Load the yaml and find all content_blocks of type video and extract the youtube_video_id
-    # 3. Load the transcript for each youtube_video_id using load_from_youtube_transcript
-    # 4. Return a list of documents
     lecture_files = glob(f"{root_path}/**/_lecture.yml", recursive=True)
     docs = []
     for lecture_file in lecture_files:
