@@ -7,7 +7,16 @@ authors = [
     { name = "Spencer Lyon", email = "spencerlyon2@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "langchain-chroma>=0.1.2",
+    "langchain-community>=0.3.21",
+    "langchain-text-splitters>=0.3.8",
+    "langchain-unstructured[local]>=0.1.6",
+    "langchain[openai]>=0.3.23",
+    "pyyaml>=6.0.2",
+    "unstructured>=0.15.14",
+    "youtube-transcript-api>=1.0.3",
+]
 
 [project.scripts]
 rag-ta = "rag_ta:main"
@@ -15,3 +24,8 @@ rag-ta = "rag_ta:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ipython>=9.1.0",
+]
